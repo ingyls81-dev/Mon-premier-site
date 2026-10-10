@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉Bio-Quiz🎉</title>
+      <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      animation: fadeIn 2s;
+    }
+    .question {
+      margin: 20px auto;
+      padding: 20px;
+      background: #ffffffcc;
+      border-radius: 12px;
+      width: 30%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .question:hover {
+      transform: scale(1.05);
+    }
+    button {
+      padding: 12px 25px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #c0392b;
+    }
+    #result {
+      margin-top: 25px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    #timer {
+      font-size: 18px;
+      color: #2980b9;
+      margin-bottom: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+   <h1>
+    Bonsoir à tous je suis ING / Maes Yis Lawrence S <br> Déja merci pour votre participation, j'espere qu'on va tous adorer <br> ce quiz 🎉 de Biologie que j'ai conçu pour vous, dans le cadre de mon 3e site web. <br> 
+  </h1> 
+ <div id="timer">Temps restant : 120s</div>
+  <div class="question">
+    <p> 1. Comment S’appelle l’ensemble des chromosomes d’un gamète ?  </p>
+    <input type="radio" name="q1" value="Phénotype"> Phénotype<br>
+    <input type="radio" name="q1" value="Génome"> Génome<br>
+    <input type="radio" name="q1" value="Agamie"> Agamie<br>
+  </div>
+
+
+  <div class="question">
+    <p>2.	Science des lois de l’hérédité ou de la variation humaine fait référence a quoi ?</p>
+    <input type="radio" name="q2" value="Biotype"> Biotype<br>
+    <input type="radio" name="q2" value="Génétique"> Génétique<br>
+    <input type="radio" name="q2" value="Génome"> Génome<br>
+  </div>
+
+  <div class="question">
+    3.	Comment s’appelle la manifestation externe du génotype ? </p>
+    <input type="radio" name="q3" value="Alosome"> Alosome<br>
+    <input type="radio" name="q3" value="Agamie"> Agamie<br>
+    <input type="radio" name="q3" value="Antroplogie"> Antroplogie<br>
+  </div>
+
+  <div class="question">
+    <p>4.	L’os qui sépare les fosses nasales en deux (2) s’appelle :</p>
+    <input type="radio" name="q4" value="Carpe"> Carpe<br>
+    <input type="radio" name="q4" value="Vomer"> Vomer<br>
+    <input type="radio" name="q4" value="Fémure">Fémure<br>
+  </div>
+
+  <div class="question">
+    <p>5.	L’hormone qui sécrète le lait s’appelle :</p>
+    <input type="radio" name="q5" value="Maltarose">Maltarase<br>
+    <input type="radio" name="q5" value="Lactose">Lactose<br>
+    <input type="radio" name="q5" value="Prolactine"> Prolactine<br>
+    </div>
+   
+    <div class="question">
+      <p>6.	Comment s’appelle le sucre qu’on trouve dans la canne  à sucre ?</p>
+      <input type="radio" name="q6" value="Pentose">Pentose<br>
+      <input type="radio" name="q6" value ="Sacharose">Sacharose<br>
+      <input type="radio" name="q6" value="sucre blanc">sucre blanc<br>
+  
+  </div>
+
+  <div class="question">
+    <p> 7.	La science qui étudie les articulations s’appelle ?    </p>
+    <input type="radio" name="q7" value="Arthrologie"> Arthrologie<br>
+    <input type="radio" name="q7" value ="Élongation">Élongation <br>
+    <input type="radio" name="q7" value="Tendinité">Tendinité<br>  
+
+  </div>
+  </div>
+    
+    <button onclick="checkAnswers()">Valider</button>
+
+  <div id="result"></div>
+
+
+  <script>
+    let timeLeft = 120;
+    let timer = setInterval(function() {
+      document.getElementById("timer").innerText = "Temps restant : " + timeLeft + "s";
+      timeLeft--;
+      if (timeLeft < 0) {
+        clearInterval(timer);
+        checkAnswers();
+      }
+    }, 1000);
+
+    function checkAnswers() {
+      clearInterval(timer);
+      let score = 2;
+
+      // Réponses correctes (à personnaliser)
+      if (document.querySelector('input[name="q1"]:checked')?.value === "Génome") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "Génétique") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === " Alosome") score++; // Correction de quiz
+      if (document.querySelector('input[name="q4"]:checked')?.value === " Vomer") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "Prolactine") score++;
+      if (document.querySelector('input[name="q6"]:checked')?.value === "Sacharose") score++;
+      if (document.querySelector('input[name="q7"]:checked')?.value === "Arthrologie") score++;
+
+      let message = "";
+      if (score === 7) message = "🌟 Félicitation, tu as Gagné ! 🌟";
+      else if (score >= 4) message = "👍 Bien joué, travaille encore plus!";
+      else if (score >= 1) message = " Tu as encore des choses à prouvé...";
+      else message = "🙈 Oups... tu as échoué !";
+
+      document.getElementById("result").innerText = "Ton score est : " + score + "/7\n" + message; // Somation des point pour les 7 questions.
+    }
+  </script>
+    <br>
+  
+    
+    <p>&copy; 2026 ING / Maestro Yis Lawrence Stephane - Tous droits réservés. <br> 
+</body>
+</html>
